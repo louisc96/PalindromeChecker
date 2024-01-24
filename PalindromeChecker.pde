@@ -6,24 +6,34 @@ public void setup()
   {
     if(palindrome(lines[i])==true)
     {
-      System.out.println(lines[i] + " IS a palindrome.");
+      println(lines[i] + " IS a palidrome.");
     }
     else
     {
-      System.out.println(lines[i] + " is NOT a palindrome.");
+      println(lines[i] + " is NOT a palidrome.");
     }
   }
 }
 public boolean palindrome(String word)
 {
-  //your code here
+  String test = onlyLetters(word);
+  if(test.equals(reverse(test))){
+    return true;
+  }
   return false;
 }
 public String reverse(String str)
 {
-    String sNew = new String();
-    //your code here
+    String sNew = "";
+    for(int i = str.length()-1;  i>=0; i--){
+      sNew += str.substring(i - 1, i);
+    }
     return sNew;
 }
-
-
+public String onlyLetters(String str1){
+  String temp = "";
+  for(int i = 0; i<str1.length(); i++)
+      if(Character.isLetter(str1.charAt(i)) == true)
+        temp += str1.substring(i,i + 1);
+  return temp.toLowerCase();
+}
